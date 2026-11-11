@@ -1,0 +1,5 @@
+# The listener row. Its fields are edited on the plugin's page under Plugins;
+# saved values land in the profile's own cordis.patch.yml.
+- insert:
+    - id: remote-access-listener
+      name: dsh-remote-access
