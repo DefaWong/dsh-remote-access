@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node10",
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noImplicitAny": true,
+    "noUncheckedIndexedAccess": true,
+    "lib": [
+      "es2023",
+      "dom"
+    ],
+    "types": [
+      "react"
+    ],
+    "rootDir": "src/client",
+    "outDir": "build/client",
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": [
+    "src/client"
+  ]
+}
