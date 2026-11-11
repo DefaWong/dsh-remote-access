@@ -6,13 +6,19 @@
 
 ## 安装
 
-1. 桌面版侧栏打开“插件”，点“添加插件”，输入 `github:DefaWong/dsh-remote-access` 并安装。
+1. 桌面版侧栏打开“插件”，点“添加插件”，输入下面的地址并安装：
+
+   ```text
+   https://github.com/DefaWong/dsh-remote-access/releases/latest/download/dsh-remote-access.tgz
+   ```
+
+   这个地址总是指向最新版本，安装时只需要能访问 GitHub，不需要在电脑上装 git。
 2. 打开插件详情页“远程访问”，点“生成新令牌”，再点“保存”。
 3. 页面顶部会显示访问链接。在手机浏览器打开这个链接即可登录，之后直接访问不带令牌的地址；也可以“添加到主屏幕”。
 
 Windows 第一次开始监听时可能弹出防火墙提示，勾选“专用网络”并允许。
 
-从 GitHub 安装的插件没有“更新”按钮：升级时先在插件页卸载，再按上面的方式重新添加。卸载可能会清掉已保存的设置，重新添加后打开插件页确认一下令牌。
+这样安装的插件没有“更新”按钮：升级时先在插件页卸载，再按上面的方式重新添加。卸载可能会清掉已保存的设置，重新添加后打开插件页确认一下令牌。
 
 ## 设置项
 
@@ -51,4 +57,11 @@ npm run build        # Host 半编译到 lib/，浏览器半编译并包装成 l
 npm test             # 单元与转发测试（Node ≥ 23）
 ```
 
-`lib/` 随仓库提交：从 GitHub 安装时不会执行构建，改完源码后要重新构建并一起提交。
+`lib/` 随仓库提交，改完源码后要重新构建并一起提交。
+
+发布新版本：改 `package.json` 的 `version`，构建并提交后打包上传到 GitHub Release，文件名固定为 `dsh-remote-access.tgz`，这样上面的安装地址始终指向最新版本：
+
+```bash
+npm pack && mv dsh-remote-access-<版本>.tgz dsh-remote-access.tgz
+gh release create v<版本> dsh-remote-access.tgz --title v<版本> --notes "..."
+```
