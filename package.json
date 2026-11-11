@@ -1,0 +1,54 @@
+{
+  "name": "dsh-remote-access",
+  "version": "0.2.0",
+  "description": "Continue this computer's DeepSeek Harness conversations from your phone or other devices on the same network",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DefaWong/dsh-remote-access.git"
+  },
+  "homepage": "https://github.com/DefaWong/dsh-remote-access#readme",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "locale/*.json",
+    "docs/*.md",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "*"
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "3.19.0",
+    "@types/node": "^22.20.1",
+    "@types/react": "^18.3.31",
+    "typescript": "^6.0.3"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "test": "node --test tests/*.test.ts"
+  }
+}
